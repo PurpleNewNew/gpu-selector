@@ -13,9 +13,17 @@ sys.path.append(str(Path(__file__).parent))
 from core import DB_PATH, set_nvidia, unset_nvidia
 from database import Database
 
+# 检查是否在PyInstaller打包环境中
+if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+    # 如果是打包环境，CSS文件在_MEIPASS目录下
+    BUNDLE_DIR = Path(sys._MEIPASS)
+else:
+    # 否则，CSS文件在脚本的同级目录
+    BUNDLE_DIR = Path(__file__).parent
+
 class TUI(App):
     TITLE = "GPU Selector"
-    CSS_PATH = "tui.css"
+    CSS_PATH = BUNDLE_DIR / "tui.css"
 
     BINDINGS = [
         ("j", "cursor_down", "Down"),
