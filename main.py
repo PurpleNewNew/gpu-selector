@@ -1,5 +1,6 @@
 import argparse
 import sys
+from pathlib import Path
 
 from core import (DB_PATH, scan_apps, set_nvidia, unset_nvidia)
 from database import Database
