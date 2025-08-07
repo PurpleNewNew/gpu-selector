@@ -1,0 +1,41 @@
+Screen {
+    layout: vertical;
+    border: solid $secondary;
+}
+
+#header {
+    dock: top;
+    height: 1;
+    content-align: center middle;
+    background: $primary;
+    color: $text;
+}
+
+Horizontal {
+    layout: horizontal;
+    height: 1fr;
+    border-top: solid $secondary;
+}
+
+#sidebar {
+    width: 30;
+    height: 100%;
+    background: $panel-lighten-1;
+    padding: 1;
+}
+
+#main-content {
+    width: 1fr;
+    padding: 0 1;
+}
+
+Input {
+    width: 100%;
+    border: vkey;
+    background: $panel-lighten-1;
+    margin-bottom: 1;
+}
+
+DataTable {
+    height: 1fr;
+}
