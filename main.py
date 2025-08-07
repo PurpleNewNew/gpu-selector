@@ -39,9 +39,9 @@ def run_unset(db: Database, identifier: str):
 
 def run_install_service():
     """创建并安装 systemd 用户服务文件。"""
-    # 获取当前python解释器和脚本的绝对路径
-    python_executable = sys.executable
-    script_path = Path(__file__).resolve().parent / "main.py"
+    # 获取当前可执行文件的绝对路径
+    # 在PyInstaller打包后，sys.argv[0]就是可执行文件本身的路径
+    executable_path = Path(sys.argv[0]).resolve()
     service_name = "gpu-selector-scan"
 
     # 定义要监控的目录
@@ -60,7 +60,7 @@ Description=Scan for applications for GPU Selector
 
 [Service]
 Type=oneshot
-ExecStart={python_executable} {script_path} scan
+ExecStart={executable_path} scan
 """
 
     # systemd .path 文件模板
